@@ -1,11 +1,12 @@
 # Mars Rover Technical Challenge
 
 # Table of Contents
-1. [Design Decisions](#design-decisions)
+1. [Problem Description](#desc)
+2. [Design Decisions](#design-decisions)
 
-2. [Assumptions](#assumptions)
+3. [Assumptions](#assumptions)
 
-3. [Class Descriptions](#class-descriptions)
+4. [Class Descriptions](#class-descriptions)
 
      a. [NaiveRover](#a.-naiverover)
      
@@ -15,11 +16,15 @@
      
      d. [Explore](#d.-explore)
  
-4. [Tests](#tests)
+5. [Tests](#tests)
 
-5. [Output](#output)
+6. [Output](#output)
 
-## 1. Design Decisions
+## 1. Problem Description 
+
+Design a system that replicates the movement of a rover. The rover can rotate left or right or move forward a certain number of steps. The rover is placed in a bounded plateau with (0,0) as origin co-ordinates. The input files contains the boundary of the plateau as the first line and a sequence of moves.
+
+## 2. Design Decisions
 
 A model view controller design pattern was implemented. The rover and plateau classes together serve as the "model", the
 class Explore is a "viewer". Controller pre-processes the data for later requirements. It fetches the bounds of the plateau 
@@ -28,14 +33,14 @@ memory.
 
 For execution and to obtain the expected output run **explore.py**.
 
-## 2. Assumptions
+## 3. Assumptions
 It was assumed that the input file will be reasonably formatted before being used. Invalid move commands can be present, but
 the rovers will not respond. For example, consider the input - 'LRMMQRR'. If an invalid move is followed by a valid move, 
 the rover will respond to that. Empty lines will be handled, but completely out of order non-empty line will cause
 problems. It was also assumed that the Rover and Plateau have the same reference point - i.e a Rover's (x, y) implies
 plateau's (x, y). Also, the rover can reach the edges of the plateau but cannot go beyond these. 
 
-## 3. Class Descriptions
+## 4. Class Descriptions
 ### a. NaiveRover
 The NaiveRover class is contained in the module rover. NaiveRover is implemented as a rover which moves strictly in a
 rectangular fashion and has only two degrees of freedom. Any object is constructed with the following attributes:
@@ -104,7 +109,7 @@ are inside the plateau and execute move commands on them. It will return the fin
 the input file. 
 
 
-## 4. Tests
+## 5. Tests
 A unittest framework was used for testing. Specific case of rover moves, rotation, plateau boundaries and etc. were
 tested. 
 
@@ -116,14 +121,14 @@ tested.
                                   2. NaiveRover.get_new_location returns a correct location outside plateau
                                   3. RectangularPlateau.is_inside() returns FALSE
                                   4. NaiveRover location does not change      
-## 5. Output
+## 6. Output
            
-####Test Input
+#### Test Input
      5 5
      1 2 N
      LMLMLMLMM
      3 3 E
      MMRMMRMRRM    
-####Obtained output
+#### Obtained output
      1 3 N
      5 1 E      
